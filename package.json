@@ -1,6 +1,6 @@
 {
   "name": "git-tidier",
-  "version": null,
+  "version": "1.0.0",
   "description": "cli tool to clean git branch interactively",
   "bin": {
     "git-tidier": "./bin/git-tidier.js"
