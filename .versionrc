@@ -17,6 +17,6 @@
     "bump": false,
     "changelog": false,
     "commit": false,
-    "tag": true
+    "tag": false
   }
 }
