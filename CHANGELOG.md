@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/bridgewwater/git-tidier/compare/v1.1.1...v1.1.2) (2023-07-25)
+
+
+### ⏪ Reverts
+
+* return to code version inquirer 7.3.3 ([093ff16](https://github.com/bridgewwater/git-tidier/commit/093ff1616429b1687b6f122e0a463e6efe97ebd9))
+
 ### [1.1.1](https://github.com/bridgewwater/git-tidier/compare/v1.1.0...v1.1.1) (2023-07-25)
 
 
