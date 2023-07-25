@@ -1,5 +1,5 @@
 const chalk = require('chalk');
-const inquirer = require('@inquirer/prompts');
+const inquirer = require('inquirer');
 
 const getGitBranchs = require('../src/utils/git/gitBranchTools').getGitBranchs;
 const deleteLocalBranchItem = require('../src/utils/git/gitBranchTools').deleteLocalBranchItem;

@@ -17,3 +17,5 @@ updates:
       interval: "monthly"
       day: "sunday"
     open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: "inquirer"
