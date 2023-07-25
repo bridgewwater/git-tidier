@@ -8,10 +8,12 @@
   "scripts": {
     "lint": "eslint \"bin/**/*.js\" \"src/**/*.js\" \"tests/**/*.js\"",
     "test": "jest",
+    "help": "node bin/git-tidier.js --help",
     "jest:coverage": "jest --collectCoverage"
   },
   "dependencies": {
     "@babel/preset-env": "^7.12.11",
+    "@inquirer/prompts": "^3.0.0",
     "@types/jest": "^26.0.20",
     "chalk": "^4.1.0",
     "commander": "^11.0.0",

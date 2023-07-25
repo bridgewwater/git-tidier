@@ -57,6 +57,7 @@ lint:
 
 test:
 	jest -ci
+	npm run help
 
 testCoverage:
 	jest --collectCoverage
