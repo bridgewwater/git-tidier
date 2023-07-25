@@ -16,7 +16,7 @@ jobs:
       matrix:
         node-version: # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
          - '14.x'
-         - '18.x'
+         - 'lts/*'
          - '20.x'
         os:
           - macos-latest
