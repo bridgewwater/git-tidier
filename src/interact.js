@@ -1,4 +1,4 @@
-const inquirer = require('@inquirer/prompts');
+const inquirer = require('inquirer');
 const chalk = require('chalk');
 
 const getGitBranchs = require('../src/utils/git/gitBranchTools').getGitBranchs;
