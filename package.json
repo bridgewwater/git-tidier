@@ -14,7 +14,7 @@
     "@babel/preset-env": "^7.12.11",
     "@types/jest": "^26.0.20",
     "chalk": "^4.1.0",
-    "commander": "^7.0.0",
+    "commander": "^11.0.0",
     "inquirer": "^7.3.3",
     "lodash": "^4.17.21",
     "log4js": "^6.4.0",
