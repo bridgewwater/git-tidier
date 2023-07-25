@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/bridgewwater/git-tidier/compare/v1.1.0...v1.1.1) (2023-07-25)
+
+
+### 🐛 Bug Fixes
+
+* fix Inquirer.js error ([3acf508](https://github.com/bridgewwater/git-tidier/commit/3acf508c7a21961247839ec224237b8c3f5d09d8))
+
+
+### 👷‍ Build System
+
+* let less node version to 14+ ([850ecc3](https://github.com/bridgewwater/git-tidier/commit/850ecc3287d9b39efddb15f0f5ea136e836baeff))
+
 ## 1.1.0 (2023-07-25)
 
 
