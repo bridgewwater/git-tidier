@@ -39,12 +39,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: get version and conventional
+        id: check-version
+        uses: convention-change/conventional-version-check@v1.2.0 # or change to latest version
+        with:
+          sha-length: 8
+
       - uses: softprops/action-gh-release@master
         name: Create Release
         if: startsWith(github.ref, 'refs/tags/')
         with:
           ## with permissions to create releases in the other repo
           token: "${{ secrets.GITHUB_TOKEN }}"
+          body: "${{ steps.check-version.outputs.cc-latest-changes-log }}"
           #  body_path: ${{ github.workspace }}-CHANGELOG.txt
           prerelease: true
           # https://github.com/isaacs/node-glob
