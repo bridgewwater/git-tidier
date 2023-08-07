@@ -13,6 +13,7 @@ git-tidier is a tool for cleaning up git branches.
 
 - Multiple modes supported: interactive mode, custom regular matching mode, and all in mode
 - By default, the recently used branch and the main branch are protected. Check whether the working directory needs to be cleaned up.
+- try to clear the local remote branch
 
 ## Contributing
 

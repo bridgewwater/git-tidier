@@ -33,6 +33,10 @@ const genDelLocalCommand = (branch, isForce = false) => {
   return `git branch ${isForce ? '-D' : '-d'} ${branch}`;
 };
 
+const pruneLocalRemoteCommand = (remote) => {
+  return `git remote prune ${remote}`;
+};
+
 const genDelRemoteCommand = (branch, remote = 'origin') => {
   return `git push --delete ${remote} ${branch}`;
 };
@@ -64,6 +68,17 @@ exports.deleteRemoteBranchItem = (branch, remote) => {
     )
   );
   shell.exec(genDelRemoteCommand(branch, remote));
+};
+
+exports.pruneLocalRemote = (remote = 'origin') => {
+  console.log(
+    chalk.green(
+      `=> try to prune local branch remote: ${chalk.cyan(
+        `${remote}`
+      )} ing...`
+    )
+  );
+  shell.exec(pruneLocalRemoteCommand(remote));
 };
 
 exports.getRegExp = getRegExp;
