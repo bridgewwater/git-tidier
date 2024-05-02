@@ -11,5 +11,5 @@ const checkBinaryExits = function (bin_name) {
 };
 
 module.exports = {
-  checkBinaryExits
+  checkBinaryExits,
 };

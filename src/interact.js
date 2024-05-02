@@ -35,17 +35,17 @@ const getQuestions = (branchs, number) => {
       name: b,
       message: `Are you sure to delete ${chalk.blue(branchs.map[b])} ${
         i + 1 > branchs.length - number ? chalk.bold.red('Recently Used!') : ''
-      }`
+      }`,
     });
   });
   return questions;
 };
 
 const interactClear = (config = {}) => {
-  const {ignore, number, local, remote, force} = config;
+  const { ignore, number, local, remote, force } = config;
   const branchs = getGitBranchs(ignore || []);
   const questions = getQuestions(branchs, number);
-  pipe(branchs.map, questions, 0, deleteBranchItem, {local, remote, force});
+  pipe(branchs.map, questions, 0, deleteBranchItem, { local, remote, force });
 };
 
 module.exports = interactClear;

@@ -1,3 +1,15 @@
+### npm ignore
+
+.drone.yml
+.woodpecker/
+Jenkinsfile
+
+z-MakefileUtils/
+Makefile
+.versionrc
+.gitea/
+.github/
+
 ### project setting
 
 *.log

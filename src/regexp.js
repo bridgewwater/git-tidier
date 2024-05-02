@@ -21,12 +21,12 @@ const filterBranchs = (branchs, pattern, number) => {
     if (i < keep && getRegExp(pattern).test(branchs.map[b])) {
       removes.push({
         branch: branchs.map[b],
-        action: 'clear'
+        action: 'clear',
       });
     } else {
       keeps.push({
         branch: branchs.map[b],
-        action: 'skip'
+        action: 'skip',
       });
     }
   });
@@ -38,17 +38,17 @@ const makeSure = () => {
     {
       type: 'confirm',
       name: 'isGo',
-      message: 'Please check the list before start and are you sure'
-    }
+      message: 'Please check the list before start and are you sure',
+    },
   ]);
 };
 
 const regexpClear = async (config = {}) => {
-  const {pattern, ignore, local, number, remote, force} = config;
+  const { pattern, ignore, local, number, remote, force } = config;
   if (getRegExp(pattern)) {
     const branchs = getGitBranchs(ignore || []);
     const [removes, keeps] = filterBranchs(branchs, pattern, number);
-    
+
     if (!removes.length) {
       return console.log(chalk.green('Nothing to clear!'));
     }
@@ -58,11 +58,11 @@ const regexpClear = async (config = {}) => {
       console.log(chalk.yellow('This branch will be skip:'));
       console.table(keeps);
     }
-    
+
     const answer = await makeSure();
     if (answer.isGo) {
       removes.forEach((b) => {
-        doClear(b.branch, {local, remote, force});
+        doClear(b.branch, { local, remote, force });
       });
     }
   } else {

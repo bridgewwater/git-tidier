@@ -15,9 +15,9 @@ jobs:
     strategy:
       matrix:
         node-version: # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-         - '14.x'
-         - 'lts/*'
+         - '18.x'
          - '20.x'
+         - 'lts/*'
         os:
           - macos-latest
           - windows-latest
@@ -30,18 +30,30 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+
       -
         name: Install dependencies
-        run: npm install
+        run: |
+          node --version
+          npm --version
+          npm install
+
       -
         name: Build if present
         run: npm run build --if-present
+
       -
-        name: Build run help
-        run: npm run help
+        name: run style check
+        run: npm run format:check
+
       -
-        name: Test with node
-        run: npm test
+        name: run lint
+        run: npm run lint
+
+      -
+        name: run test
+        run: npm run test
+
       -
         name: Test coverage
         run: npm run jest:coverage

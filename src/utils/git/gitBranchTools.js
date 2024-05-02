@@ -2,8 +2,8 @@ const shell = require('shelljs');
 const chalk = require('chalk');
 
 const getGitBranchText = () => {
-  const {stdout} = shell.exec('git branch --sort=committerdate', {
-    silent: true
+  const { stdout } = shell.exec('git branch --sort=committerdate', {
+    silent: true,
   });
   return stdout;
 };
@@ -50,34 +50,18 @@ const getRegExp = (str) => {
 
 // clear local branch
 exports.deleteLocalBranchItem = (branch, isForce) => {
-  console.log(
-    chalk.green(
-      `=> try to delete the local branch: ${chalk.cyan(branch)} ing...`
-    )
-  );
+  console.log(chalk.green(`=> try to delete the local branch: ${chalk.cyan(branch)} ing...`));
   shell.exec(genDelLocalCommand(branch, isForce));
 };
 
 // clear remote branch
 exports.deleteRemoteBranchItem = (branch, remote) => {
-  console.log(
-    chalk.green(
-      `=> try to delete the remote branch: ${chalk.cyan(
-        `${remote}/${branch}`
-      )} ing...`
-    )
-  );
+  console.log(chalk.green(`=> try to delete the remote branch: ${chalk.cyan(`${remote}/${branch}`)} ing...`));
   shell.exec(genDelRemoteCommand(branch, remote));
 };
 
 exports.pruneLocalRemote = (remote = 'origin') => {
-  console.log(
-    chalk.green(
-      `=> try to prune local branch remote: ${chalk.cyan(
-        `${remote}`
-      )} ing...`
-    )
-  );
+  console.log(chalk.green(`=> try to prune local branch remote: ${chalk.cyan(`${remote}`)} ing...`));
   shell.exec(pruneLocalRemoteCommand(remote));
 };
 

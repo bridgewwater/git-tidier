@@ -1,6 +1,5 @@
 // Copyright sinlov
 
-
 const pkgInfo = require('../../package.json');
 
 let cacheBinName = '';
@@ -13,5 +12,5 @@ const binName = () => {
 
 module.exports = {
   pkgInfo,
-  binName
+  binName,
 };

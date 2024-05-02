@@ -42,7 +42,10 @@ const readFileSyncAsString = function (path, encoding = 'utf-8') {
   }
   try {
     nlog.debug(`start read sync file as string: ${absPath}`);
-    let readFileSync = fs.readFileSync(absPath, {encoding: encoding, flag: 'r'});
+    let readFileSync = fs.readFileSync(absPath, {
+      encoding: encoding,
+      flag: 'r',
+    });
     let res = readFileSync.toString(encoding);
     nlog.debug(`finish read sync file as string: ${absPath}`);
     return res;
@@ -65,7 +68,10 @@ const readFileSyncAsJson = function (path, encoding = 'utf-8') {
   }
   try {
     nlog.debug(`start read sync file as json: ${absPath}`);
-    let readFileSync = fs.readFileSync(absPath, {encoding: encoding, flag: 'r'});
+    let readFileSync = fs.readFileSync(absPath, {
+      encoding: encoding,
+      flag: 'r',
+    });
     let parse = JSON.parse(readFileSync.toString(encoding));
     nlog.debug(`finish read sync file as json: ${absPath}`);
     return parse;
@@ -88,7 +94,10 @@ const readFileSyncAsYaml = function (path, encoding = 'utf-8') {
   }
   try {
     nlog.debug(`start read sync file as yaml: ${absPath}`);
-    let readFileSync = fs.readFileSync(absPath, {encoding: encoding, flag: 'r'});
+    let readFileSync = fs.readFileSync(absPath, {
+      encoding: encoding,
+      flag: 'r',
+    });
     let parse = YAML.parse(readFileSync.toString(encoding));
     nlog.debug(`finish read sync file as yaml: ${absPath}`);
     return parse;
@@ -210,7 +219,6 @@ const writeYaml2FileSync = function (path, yaml) {
     return false;
   }
 };
-
 
 module.exports = {
   appendFileSync,

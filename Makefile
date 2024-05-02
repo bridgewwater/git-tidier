@@ -25,102 +25,81 @@ env:
 	@echo "test info"
 	@echo "ENV_COVERAGE_OUT_FOLDER                   ${ENV_COVERAGE_OUT_FOLDER}"
 	@echo "== project env info end =="
+	@echo "most of node project need pnpm"
+	pnpm --version
+	@echo "pnpm registry is:"
+	@pnpm config get registry
 
 cleanCoverageOut:
 	@$(RM) -r ${ENV_COVERAGE_OUT_FOLDER}
-	$(info "~> has cleaned ${ENV_COVERAGE_OUT_FOLDER}")
+	$(info ~> has cleaned ${ENV_COVERAGE_OUT_FOLDER})
 
 cleanNpmCache:
 	@$(RM) -r ${ENV_NODE_MODULES_FOLDER}
-	$(info "~> has cleaned ${ENV_NODE_MODULES_FOLDER}")
+	$(info ~> has cleaned ${ENV_NODE_MODULES_FOLDER})
 	@$(RM) ${ENV_NODE_MODULES_LOCK_FILE}
-	$(info "~> has cleaned ${ENV_NODE_MODULES_LOCK_FILE}")
+	$(info ~> has cleaned ${ENV_NODE_MODULES_LOCK_FILE})
 
 cleanAll: cleanCoverageOut cleanNpmCache
 	@echo "=> clean all finish"
 
-installGlobal:
-	npm install --global rimraf eslint jest
 
 install:
 	npm install
 
-installAll: utils installGlobal install
-	@echo "=> install all finish"
+dep: install
 
-upgradeAll:
-	ncu -u
-	npm ci
+depPrune:
+	npm prune
 
 lint:
 	npm run lint
 
-test:
-	jest -ci
-	npm run help
+lintEslint:
+	npm run lint:eslint
 
-testCoverage:
-	jest --collectCoverage
+style:
+	npm run format
 
-testCICoverage:
-	$(info "if codecov not install, please install as: npm install -g codecov")
-	jest --ci --coverage
-	codecov
+styleCheck:
+	npm run format:check
+
+testCoverage: cleanCoverageOut
+	npm run jest:collectCoverage
+
+testCICoverage: cleanCoverageOut
+	npm run jest:coverage
 
 testAll:
 	npm run test
 
-style: lint
-
 buildIfPresent:
-	npm run build --if-present
+	npm run --if-present build
 
-ci: buildIfPresent lint test
+ci: styleCheck lint testAll buildIfPresent
 
-utils:
-	node -v
-	npm -v
-	npm install -g commitizen cz-conventional-changelog conventional-changelog-cli npm-check-updates standard-version
-
-versionHelp:
-	@git fetch --tags
-	@echo "project base info"
-	@echo " project name         : ${ROOT_NAME}"
-	@echo " module folder path   : ${ENV_MODULE_FOLDER}"
+helpProjectRoot:
+	@echo "Help: Project root Makefile"
+ifeq ($(OS),Windows_NT)
 	@echo ""
-	@echo "=> please check to change version, now is [ ${ENV_DIST_VERSION} ]"
-	@echo "-> check at: ${ENV_MODULE_MANIFEST}:3"
-
-tagBefore: versionHelp
-	@cd ${ENV_MODULE_FOLDER} && conventional-changelog -i ${ENV_MODULE_CHANGELOG} -s --skip-unstable
+	@echo "warning: other install make cli tools has bug"
+	@echo " run will at make tools version 4.+"
+	@echo "windows use this kit must install tools blow:"
+	@echo "-> scoop install main/make"
 	@echo ""
-	@echo "=> new CHANGELOG.md at: ${ENV_MODULE_CHANGELOG}"
-	@echo "place check all file, then can add tag like this!"
-	@echo "$$ git tag -a '${ENV_DIST_VERSION}' -m 'message for this tag'"
-
-help:
-	@echo "node module makefile template"
-	@echo ""
-	@echo " tips: can install node and install utils as"
-	@echo "$$ make utils               ~> npm install git cz"
-	@echo "  1. then write git commit log, can replace [ git commit -m ] to [ git cz ]"
-	@echo "  2. generate CHANGELOG.md doc: https://github.com/commitizen/cz-cli#conventional-commit-messages-as-a-global-utility"
-	@echo ""
-	@echo "  then you can generate CHANGELOG.md as"
-	@echo "$$ make versionHelp         ~> print version when make tageBefore will print again"
-	@echo "$$ make tagBefore           ~> generate CHANGELOG.md and copy to module folder"
-	@echo ""
-	@echo " project name         : ${ROOT_NAME}"
-	@echo " module folder path   : ${ENV_MODULE_FOLDER}"
-	@echo ""
-	@echo "Warning: must install node and install module as"
-	@echo "$$ make installGlobal       ~> install must tools at global"
-	@echo "$$ make install             ~> install project"
-	@echo "$$ make installAll          ~> install all include global utils and node_module"
-	@echo "$$ make style               ~> run style check"
-	@echo "$$ make ci                  ~> run ci"
+endif
+	@echo "-- node module makefile root --"
+	@echo " this project management by https://docs.npmjs.com/downloading-and-installing-node-js-and-npm"
+	@echo "~> make env                                   - print env of this project"
+	@echo "~> make dep                                   - install"
+	@echo "~> make style                                 - run style check and auto fix"
+	@echo "~> make lintEslint                            - run lint check and auto fix"
+	@echo "~> make ci                                    - run ci"
 	@echo " unit test as"
-	@echo "$$ make test                ~> only run unit test as change"
-	@echo "$$ make testAll             ~> run full unit test"
-	@echo "$$ make testCoverage        ~> run full unit test and show coverage"
-	@echo "$$ make testCICoverage      ~> run full unit test CI coverage"
+	@echo "~> make testCoverage                          - run full unit test and show coverage"
+	@echo "~> make testCICoverage                        - run full unit test CI coverage"
+	@echo "~> make testAll                               - run full unit test"
+
+help: helpProjectRoot
+	@echo ""
+	@echo "-- more info see Makefile --"

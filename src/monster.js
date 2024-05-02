@@ -20,12 +20,12 @@ const filterBranchs = (branchs, number) => {
     if (i < keep) {
       removes.push({
         branch: branchs.map[b],
-        action: 'clear'
+        action: 'clear',
       });
     } else {
       keeps.push({
         branch: branchs.map[b],
-        action: 'skip'
+        action: 'skip',
       });
     }
   });
@@ -37,17 +37,17 @@ const makeSure = () => {
     {
       type: 'confirm',
       name: 'isGo',
-      message: 'Please check the list before start and are you sure'
-    }
+      message: 'Please check the list before start and are you sure',
+    },
   ]);
 };
 
 const monsterClear = async (config = {}) => {
-  const {ignore, number, local, remote, force} = config;
-  
+  const { ignore, number, local, remote, force } = config;
+
   const branchs = getGitBranchs(ignore || []);
   const [removes, keeps] = filterBranchs(branchs, number);
-  
+
   if (!removes.length) {
     return console.log(chalk.green('Nothing to clear!'));
   }
@@ -57,11 +57,11 @@ const monsterClear = async (config = {}) => {
     console.log(chalk.yellow('This branchs will be skip:'));
     console.table(keeps);
   }
-  
+
   const answer = await makeSure();
   if (answer.isGo) {
     removes.forEach((b) => {
-      doClear(b.branch, {local, remote, force});
+      doClear(b.branch, { local, remote, force });
     });
   }
 };
