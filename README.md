@@ -1,6 +1,6 @@
 # git-tidier
 
-git-tidier is a tool for cleaning up git branches. 
+git-tidier is a tool for cleaning up git branches.
 
 [![node-ci](https://github.com/bridgewwater/git-tidier/workflows/node-ci/badge.svg?branch=main)](https://github.com/bridgewwater/git-tidier/actions/workflows/node-ci.yml)
 [![NPM Version](http://img.shields.io/npm/v/git-tidier.svg?style=flat)](https://www.npmjs.org/package/git-tidier)
@@ -14,15 +14,6 @@ git-tidier is a tool for cleaning up git branches.
 - Multiple modes supported: interactive mode, custom regular matching mode, and all in mode
 - By default, the recently used branch and the main branch are protected. Check whether the working directory needs to be cleaned up.
 - try to clear the local remote branch ( support v1.2.+)
-
-## Contributing
-
-[![Contributor Covenant](https://img.shields.io/badge/contributor%20covenant-v1.4-ff69b4.svg)](.github/CONTRIBUTING_DOC/CODE_OF_CONDUCT.md)
-[![GitHub contributors](https://img.shields.io/github/contributors/bridgewwater/template-golang-lib)](https://github.com/bridgewwater/template-golang-lib/graphs/contributors)
-
-We welcome community contributions to this project.
-
-Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for more information on how to get started.
 
 ## usage
 
@@ -108,3 +99,14 @@ $ git-tidier clear -ig dev develop
 # The number of protected branches is 5, and the default number is 3.
 $ git-tidier clear -n 5
 ```
+
+## Contributing
+
+[![Contributor Covenant](https://img.shields.io/badge/contributor%20covenant-v1.4-ff69b4.svg)](.github/CONTRIBUTING_DOC/CODE_OF_CONDUCT.md)
+[![GitHub contributors](https://img.shields.io/github/contributors/bridgewwater/git-tidier)](https://github.com/bridgewwater/git-tidier/graphs/contributors)
+
+We welcome community contributions to this project.
+
+Please read [Contributor Guide](.github/CONTRIBUTING_DOC/CONTRIBUTING.md) for more information on how to get started.
+
+请阅读有关 [贡献者指南](.github/CONTRIBUTING_DOC/zh-CN/CONTRIBUTING.md) 以获取更多如何入门的信息
