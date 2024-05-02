@@ -1,0 +1,49 @@
+## more doc see
+# https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#approve-a-pull-request
+
+name: Dependabot auto-merge
+on: pull_request
+
+permissions:
+  contents: write
+  pull-requests: write
+  repository-projects: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Enable auto-merge for Dependabot PRs
+        # Automatically merge the following dependency upgrades:
+        if: "${{  steps.metadata.outputs.dependency-names == '@actions/core' ||
+                  steps.metadata.outputs.dependency-names == 'actions/checkout' ||
+                  steps.metadata.outputs.dependency-names == 'actions/setup-node' ||
+                  steps.metadata.outputs.dependency-names == '@babel/preset-env' ||
+                  steps.metadata.outputs.dependency-names == 'babel-core' ||
+                  steps.metadata.outputs.dependency-names == 'babel-jest' ||
+                  steps.metadata.outputs.dependency-names == 'babel-preset-env' ||
+                  steps.metadata.outputs.dependency-names == 'regenerator-runtime' ||
+                  steps.metadata.outputs.dependency-names == 'eslint' ||
+                  steps.metadata.outputs.dependency-names == '@stylistic/eslint-plugin' ||
+                  steps.metadata.outputs.dependency-names == 'jest' ||
+                  steps.metadata.outputs.dependency-names == 'prettier' ||
+                  steps.metadata.outputs.dependency-names == 'semver' ||
+                  steps.metadata.outputs.dependency-names == 'rimraf' ||
+                  steps.metadata.outputs.dependency-names == 'codecov/codecov-action' ||
+                  steps.metadata.outputs.dependency-names == 'convention-change/conventional-version-check'
+            }}"
+
+        run: |
+          gh pr edit --add-label 'dependencies-auto-merged' "$PR_URL"
+          gh pr review --approve "$PR_URL"
+          gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
