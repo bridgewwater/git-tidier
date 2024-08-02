@@ -43,7 +43,7 @@
   "dependencies": {
     "@babel/preset-env": "^7.12.11",
     "@inquirer/prompts": "^4.1.0",
-    "@types/jest": "^29.5.3",
+    "@types/jest": "^29.5.12",
     "chalk": "^4.1.0",
     "commander": "^12.1.0",
     "inquirer": "^10.1.6",
