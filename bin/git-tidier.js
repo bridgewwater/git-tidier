@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
-const program = require('commander');
+const { Command } = require('commander');
+const program = new Command();
 const chalk = require('chalk');
 const shell = require('shelljs');
 
@@ -20,15 +21,18 @@ program.version(app.version, '-v, --version');
 
 program.option('-f, --force', 'force to delete', false);
 program.option('-r, --remote <remote>', 'the name of remote repo', 'origin');
-program.option('-ig, --ignore <ignore...>', 'ignore branchs [ main ] is contains, if you want clean main just set -n 0');
+program.option(
+  '-ig, --ignore <ignore...>',
+  'ignore branchs [ main ] is contains, if you want clean main just set -n 0',
+);
 
 program
   .command('check')
   .description('check current work directory')
   .option('-n, --number <number>', 'the number of safety branchs', 3)
   .action((opts) => {
-    const {number} = opts;
-    checkCwd({...program.opts(), number});
+    const { number } = opts;
+    checkCwd({ ...program.opts(), number });
   });
 
 program
@@ -41,26 +45,25 @@ program
   .option('-n, --number <number>', 'the number of safety branchs', 3)
   .option('-p, --pattern <pattern>', 'the pattern of match')
   .action((opts) => {
-    const {interactive, all, execute, number, local, pattern} = opts;
+    const { interactive, all, execute, number, local, pattern } = opts;
     switch (true) {
-    case execute:
-      regexpClear({
-        ...program.opts(),
-        number,
-        local,
-        pattern
-      }).then(r => console.log(chalk.green(`clear regexp: ${r}`)));
-      break;
-    case all:
-      monsterClear({...program.opts(), number, local})
-        .then(r => console.log(chalk.green(`clear ${r} branch`)));
-      break;
-    case interactive:
-      interact({...program.opts(), number, local});
-      break;
-    default:
-      interact({...program.opts(), number, local});
-      break;
+      case execute:
+        regexpClear({
+          ...program.opts(),
+          number,
+          local,
+          pattern,
+        }).then((r) => console.log(chalk.green(`clear regexp: ${r}`)));
+        break;
+      case all:
+        monsterClear({ ...program.opts(), number, local }).then((r) => console.log(chalk.green(`clear ${r} branch`)));
+        break;
+      case interactive:
+        interact({ ...program.opts(), number, local });
+        break;
+      default:
+        interact({ ...program.opts(), number, local });
+        break;
     }
   });
 
