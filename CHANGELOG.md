@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.3.2](https://github.com/bridgewwater/git-tidier/compare/1.3.1...v1.3.2) (2024-08-03)
+
+### 👷‍ Build System
+
+* change `ci.yml` use `needs.version.outputs.cc_version` ([c603c9a6](https://github.com/bridgewwater/git-tidier/commit/c603c9a6caf0697330e0760d64c5d3b183b3a7d4))
+
 ## [1.3.1](https://github.com/bridgewwater/git-tidier/compare/1.3.0...v1.3.1) (2024-08-03)
 
 ### 👷‍ Build System
