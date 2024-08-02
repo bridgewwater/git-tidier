@@ -22,24 +22,8 @@ jobs:
 
       - name: Enable auto-merge for Dependabot PRs
         # Automatically merge the following dependency upgrades:
-        if: "${{  steps.metadata.outputs.dependency-names == '@actions/core' ||
-                  steps.metadata.outputs.dependency-names == 'actions/checkout' ||
-                  steps.metadata.outputs.dependency-names == 'actions/setup-node' ||
-                  steps.metadata.outputs.dependency-names == '@babel/preset-env' ||
-                  steps.metadata.outputs.dependency-names == 'babel-core' ||
-                  steps.metadata.outputs.dependency-names == 'babel-jest' ||
-                  steps.metadata.outputs.dependency-names == 'babel-preset-env' ||
-                  steps.metadata.outputs.dependency-names == 'regenerator-runtime' ||
-                  steps.metadata.outputs.dependency-names == 'eslint' ||
-                  steps.metadata.outputs.dependency-names == '@stylistic/eslint-plugin' ||
-                  steps.metadata.outputs.dependency-names == 'jest' ||
-                  steps.metadata.outputs.dependency-names == 'prettier' ||
-                  steps.metadata.outputs.dependency-names == 'semver' ||
-                  steps.metadata.outputs.dependency-names == 'rimraf' ||
-                  steps.metadata.outputs.dependency-names == 'codecov/codecov-action' ||
-                  steps.metadata.outputs.dependency-names == 'convention-change/conventional-version-check'
-            }}"
-
+        # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#ignore
+        if: steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.metadata.outputs.update-type == 'version-update:semver-patch'
         run: |
           gh pr edit "$PR_URL" --add-label "dependencies"
           gh pr merge --auto --merge '${{ github.event.pull_request.html_url }}'

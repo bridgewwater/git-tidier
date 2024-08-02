@@ -1,21 +1,23 @@
+# need env: CODECOV_TOKEN add at to action secrets
 name: node-codecov
 
 on:
-  push:
-    tags:
-      - '*' # Push events to matching *, i.e. 1.0.0 v1.0, v20.15.10
-
-permissions:
-  contents: write
+  workflow_call: # https://docs.github.com/actions/using-workflows/reusing-workflows#using-inputs-and-secrets-in-a-reusable-workflow
 
 jobs:
   node-codecov:
     name: node-codecov
+    defaults:
+      run:
+        shell: bash
+       # working-directory: ${{ env.WORK_DIR }}
     strategy:
       matrix:
-        node-version:
+        node-version: # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
           - 'lts/*'
-    runs-on: ubuntu-latest
+        os:
+          - ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       -
@@ -24,18 +26,31 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       -
+        name: Install dependencies
+        run: |
+          npm install
+          # npm ci
+          node -v
+      -
+        name: Build if present
+        run: |
+          npm run build --if-present
+      -
+        name: Run lint
+        run: |
+          npm run lint
+      -
+        name: Test with node
+        run: |
+          npm test
+      -
         name: Test coverage
         run: |
-          node -v
-          npm install
-          npm run build --if-present
-          npm test
           npm run jest:coverage
 
       - name: Codecov
         uses: codecov/codecov-action@v4.5.0
         with:
           token: ${{secrets.CODECOV_TOKEN}}
-          files: coverage/clover.xml
+          directory: ./coverage
 #          verbose: true
-

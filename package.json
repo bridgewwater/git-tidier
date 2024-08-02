@@ -2,17 +2,43 @@
   "name": "git-tidier",
   "version": "1.2.0",
   "description": "cli tool to clean git branch interactively",
+  "keywords": [
+    "clear",
+    "git",
+    "git branch",
+    "node",
+    "cli",
+    "node-cli"
+  ],
+  "author": {
+    "name": "sinlov",
+    "email": "sinlovgmppt@gmail.com",
+    "url": "https://github.com/bridgewwater/git-tidier"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bridgewwater/git-tidier.git"
+  },
+  "homepage": "https://github.com/bridgewwater/git-tidier#readme",
+  "bugs": {
+    "url": "https://github.com/bridgewwater/git-tidier/issues"
+  },
   "bin": {
     "git-tidier": "./bin/git-tidier.js"
   },
   "scripts": {
-    "format": "npx prettier --write \"{src,tests}/**/*.{js,vue,ts,tsx}\"",
+    "cli:help": "node bin/git-tidier.js --help",
+    "clean:rimraf": "npx rimraf node_modules package-lock.json",
+    "clean:lockfile": "npx replace-lockfile-registry --registry https://registry.npmjs.org/",
     "format:check": "npx prettier --check \"{src,tests}/**/*.{js,vue,ts,tsx}\"",
-    "lint": "npx eslint \"{src,tests}/**/*.{js,vue,ts,tsx}\" --max-warnings 0",
-    "lint:eslint": "eslint --cache --max-warnings 0 \"{src,tests}/**/*.{js,vue,ts,tsx}\" --fix",
-    "test": "npx jest --ci",
-    "jest:coverage": "npx jest --ci --coverage",
-    "jest:collectCoverage": "npx jest --collectCoverage"
+    "format": "npx prettier --write eslint.config.mjs \"{bin,src,tests}/**/*.{js,vue,ts,tsx}\"",
+    "lint:eslint": "npx eslint \"{bin,src,tests}/**/*.{js,vue,ts,tsx}\" --max-warnings 0",
+    "lint": "npm run lint:eslint",
+    "lint:eslintNoWarning": "npx eslint --cache --max-warnings 0 \"{bin,src,tests}/**/*.{js,vue,ts,tsx}\" --fix",
+    "jest:coverage": "npx jest --ci --coverage --silent",
+    "jest:collectCoverage": "npx jest --collectCoverage --silent",
+    "test": "npx jest --ci"
   },
   "dependencies": {
     "@babel/preset-env": "^7.12.11",
@@ -27,40 +53,21 @@
     "moment": "^2.29.4",
     "shelljs": "^0.8.5",
     "string-format": "^2.0.0",
-    "yamljs": "^0.3.0"
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-jest": "^29.6.1",
-    "babel-preset-env": "^1.7.0",
-    "regenerator-runtime": "^0.14.0",
-    "@stylistic/eslint-plugin": "^2.1.0",
+    "@eslint/js": "^9.8.0",
     "eslint": "^9.8.0",
-    "eslint-plugin-jest": "^28.0.0",
+    "eslint-plugin-jest": "^28.6.0",
+    "globals": "^15.9.0",
     "jest": "^29.7.0",
-    "prettier": "^3.2.5",
-    "rimraf": "^6.0.1",
-    "semver": "^7.6.0"
+    "prettier": "^3.3.3",
+    "regenerator-runtime": "^0.14.1",
+    "replace-lockfile-registry": "^0.0.2",
+    "rimraf": "6.0.1",
+    "semver": "^7.6.3"
   },
   "engines": {
-    "node": ">=14.18.0"
-  },
-  "keywords": [
-    "clear",
-    "git",
-    "git branch",
-    "node",
-    "cli",
-    "node-cli"
-  ],
-  "author": "sinlovgmppt",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/bridgewwater/git-tidier.git"
-  },
-  "homepage": "https://github.com/bridgewwater/git-tidier#readme",
-  "bugs": {
-    "url": "https://github.com/bridgewwater/git-tidier/issues"
+    "node": ">=18.0.0"
   }
 }
