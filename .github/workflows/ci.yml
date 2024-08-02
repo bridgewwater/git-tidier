@@ -65,10 +65,11 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     secrets: inherit
     with:
+      dry-run: false
       tag_name: ${{ needs.version.outputs.tag_name }}
       tag_changes: ${{ needs.version.outputs.cc_changes }}
       npm_version: ${{ needs.version.outputs.cc_version }}
-      # dry-run: false
+      # npm_distribution: latest
       # upload_artifact_name: node-release
 
   deploy-tag:
