@@ -46,7 +46,7 @@
     "@types/jest": "^29.5.3",
     "chalk": "^4.1.0",
     "commander": "^12.1.0",
-    "inquirer": "^7.3.3",
+    "inquirer": "^10.1.6",
     "lodash": "^4.17.21",
     "log4js": "^6.4.0",
     "minimatch": "^9.0.3",
