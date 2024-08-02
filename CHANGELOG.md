@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.3.1](https://github.com/bridgewwater/git-tidier/compare/1.3.0...v1.3.1) (2024-08-03)
+
+### 👷‍ Build System
+
+* change `node-release.yml` to push npm ([032acef3](https://github.com/bridgewwater/git-tidier/commit/032acef32785a587d7d33a1af8bcff30ef0aab0e))
+
 ## [1.3.0](https://github.com/bridgewwater/git-tidier/compare/1.2.0...v1.3.0) (2024-08-03)
 
 ### ✨ Features

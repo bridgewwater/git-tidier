@@ -1,6 +1,6 @@
 {
   "name": "git-tidier",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "cli tool to clean git branch interactively",
   "keywords": [
     "clear",
