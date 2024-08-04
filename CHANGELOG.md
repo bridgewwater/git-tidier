@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.3.4](https://github.com/bridgewwater/git-tidier/compare/1.3.3...v1.3.4) (2024-08-04)
+
+### BREAKING CHANGE:
+
+* now use `CJS compatible` for support cli
+
+### 🐛 Bug Fixes
+
+* `inquirer.prompt is not a function` for Inquirer v8 which is still CJS compatible ([b739d799](https://github.com/bridgewwater/git-tidier/commit/b739d7994ed4bf6ae4f9c625d076cf724eb043ea)), fix [#100](https://github.com/bridgewwater/git-tidier/issues/100)
+
+### 👷‍ Build System
+
+* bump inquirer from 8.2.4 to 8.2.6 ([e47c3d45](https://github.com/bridgewwater/git-tidier/commit/e47c3d45e588ffbec410b5c06dac3584da259c9e))
+
 ## [1.3.3](https://github.com/bridgewwater/git-tidier/compare/1.3.2...v1.3.3) (2024-08-03)
 
 ### 👷‍ Build System
