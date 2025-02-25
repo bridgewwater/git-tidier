@@ -2,7 +2,7 @@
 
 git-tidier is a tool for cleaning up git branches.
 
-[![node-ci](https://github.com/bridgewwater/git-tidier/workflows/node-ci/badge.svg?branch=main)](https://github.com/bridgewwater/git-tidier/actions/workflows/node-ci.yml)
+[![ci](https://github.com/bridgewwater/git-tidier/actions/workflows/ci.yml/badge.svg)](https://github.com/bridgewwater/git-tidier/actions/workflows/ci.yml)
 [![NPM Version](http://img.shields.io/npm/v/git-tidier.svg?style=flat)](https://www.npmjs.org/package/git-tidier)
 [![NPM Downloads](https://img.shields.io/npm/dm/git-tidier.svg?style=flat)](https://npmcharts.com/compare/git-tidier?minimal=true)
 [![codecov](https://codecov.io/gh/bridgewwater/git-tidier/branch/main/graph/badge.svg)](https://codecov.io/gh/bridgewwater/git-tidier)
