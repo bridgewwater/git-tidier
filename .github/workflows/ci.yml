@@ -4,6 +4,7 @@ on:
   push:
     paths-ignore:
       - '**/README.md'
+      - '**/README**.md'
     branches:
       # - 'main'
       - 'release-*'

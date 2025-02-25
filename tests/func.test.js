@@ -137,7 +137,7 @@ describe('test func getGitBranchs', () => {
 
   it('should return array without main and ignores', () => {
     shelljs.exec.mockReturnValueOnce({ stdout: branchs });
-    const values = getGitBranchs(['feat/202306-test1']);
+    const values = getGitBranchs('',['feat/202306-test1']);
     expect(values).toHaveLength(2);
     expect(values).toHaveProperty('map');
     // ignores and main
