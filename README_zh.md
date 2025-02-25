@@ -85,7 +85,7 @@ $ git-tidier clear -l
 # 删除, 除保护分支外的所有分支
 $ git-tidier clear -a
 
-# 强制删除
+# 强制删除。如果这个分支中有未合并的提交，它们也将被成功删除。
 $ git-tidier clear -f
 
 # 正则匹配模式 支持js正则表达式自定义检索分支

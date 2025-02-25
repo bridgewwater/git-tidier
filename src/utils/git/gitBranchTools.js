@@ -10,12 +10,15 @@ const getGitBranchText = () => {
 
 // get current branchs
 // skip default is main
-exports.getGitBranchs = (ignores = []) => {
+exports.getGitBranchs = (protection = 'main', ignores = []) => {
   const text = getGitBranchText();
   const branchs = [];
   const map = {};
-  // skip master default
-  const skips = ['main'].concat(ignores);
+  if (protection === '') {
+    protection = 'main';
+  }
+  // skip main default
+  const skips = [protection].concat(ignores);
   text.split('\n').forEach((b, i) => {
     const sb = b.trim();
     // skip ignore branchs in config and current branch

@@ -43,9 +43,9 @@ const makeSure = () => {
 };
 
 const monsterClear = async (config = {}) => {
-  const { ignore, number, local, remote, force } = config;
+  const { ignore, number, local, remote, force, protection } = config;
 
-  const branchs = getGitBranchs(ignore || []);
+  const branchs = getGitBranchs(protection, ignore || []);
   const [removes, keeps] = filterBranchs(branchs, number);
 
   if (!removes.length) {

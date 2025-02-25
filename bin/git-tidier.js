@@ -19,7 +19,8 @@ if (!shell.which('git')) {
 
 program.version(app.version, '-v, --version');
 
-program.option('-f, --force', 'force to delete', false);
+program.option('-f, --force', 'force to delete, will not check branch has submitted but not merged', false);
+program.option('--protection <protection>', 'protection branch name', 'main');
 program.option('-r, --remote <remote>', 'the name of remote repo', 'origin');
 program.option(
   '-ig, --ignore <ignore...>',
@@ -40,7 +41,7 @@ program
   .description('clear git branch in current work directory')
   .option('-i, --interactive', 'clear git branch interactively', true)
   .option('-e, --execute', 'clear git branch by regexp')
-  .option('-a, --all', 'clear all git branch but master')
+  .option('-a, --all', 'clear all git branch but main')
   .option('-l, --local', 'just clear local branch', false)
   .option('-n, --number <number>', 'the number of safety branchs', 3)
   .option('-p, --pattern <pattern>', 'the pattern of match')

@@ -77,7 +77,7 @@ $ git-tidier clear -l
 # delete all branches except the protection branch
 $ git-tidier clear -a
 
-# force delete
+# force delete. If there are unmerged commits in this branch, they will also be deleted successfully.
 $ git-tidier clear -f
 
 # Regular matching pattern support js regular expression custom search branch

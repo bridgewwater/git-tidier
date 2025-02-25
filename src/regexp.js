@@ -44,9 +44,9 @@ const makeSure = () => {
 };
 
 const regexpClear = async (config = {}) => {
-  const { pattern, ignore, local, number, remote, force } = config;
+  const { pattern, ignore, local, number, remote, force, protection } = config;
   if (getRegExp(pattern)) {
-    const branchs = getGitBranchs(ignore || []);
+    const branchs = getGitBranchs(protection, ignore || []);
     const [removes, keeps] = filterBranchs(branchs, pattern, number);
 
     if (!removes.length) {
