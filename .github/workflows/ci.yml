@@ -77,6 +77,7 @@ jobs:
     needs:
       - version
       - node-ci
+      - node-release
     name: deploy-tag
     uses: ./.github/workflows/deploy-tag.yml
     if: startsWith(github.ref, 'refs/tags/')
