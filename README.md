@@ -12,8 +12,13 @@ git-tidier is a tool for cleaning up git branches.
 ## Features
 
 - Multiple modes supported: interactive mode, custom regular matching mode, and all in mode
-- By default, the recently used branch and the main branch are protected. Check whether the working directory needs to be cleaned up.
-- try to clear the local remote branch ( support v1.2.+)
+- By default, the recently used branch and the main branch are protected. Check whether the working directory needs to
+  be cleaned up.
+- try to clear the local remote branch ( support v1.2.0+)
+- Support setting protection branch (support v1.4.0+)
+- minimum node version required
+    - 1.2.+ `>= 18.0.0`
+    - 1.0.+ `>= 16.0.0`
 
 ## usage
 
@@ -30,7 +35,8 @@ $ npm uninstall -g git-tidier
 
 ### Before Use
 
-Note: `Deleting a branch is a very dangerous thing`, please ensure that the current warehouse work has been completed, carefully check the prompt information
+Note: `Deleting a branch is a very dangerous thing`, please ensure that the current warehouse work has been completed,
+carefully check the prompt information
 
 good development habits are
 
@@ -56,9 +62,12 @@ $ git-tidier check -n 3
 
 ### clear
 
-- To ensure that branches are not deleted by mistake as much as possible, the git-tidier ignores the main branch, the current branch, and the three most recently active branches by default (the default behavior can be overridden by configuration)
+- To ensure that branches are not deleted by mistake as much as possible, the git-tidier ignores the main branch, the
+  current branch, and the three most recently active branches by default (the default behavior can be overridden by
+  configuration)
 - git-tidier deletes the local branch and the remote branch corresponding to the remote origin by default
-- If the deletion is unstable, it can be set to `git-tidier clear -n 5` . Do you need to clear it on the premise of keeping the latest 5 branches?
+- If the deletion is unstable, it can be set to `git-tidier clear -n 5` . Do you need to clear it on the premise of
+  keeping the latest 5 branches?
 
 #### InteractionMode
 
@@ -94,7 +103,7 @@ $ git-tidier clear -e -p '/FE-.*/' -n 0
 $ git-tidier clear -r ori
 
 # ignore dev when cleaning develop branch
-$ git-tidier clear -ig dev develop
+$ git-tidier clear -g dev develop
 
 # The number of protected branches is 5, and the default number is 3.
 $ git-tidier clear -n 5

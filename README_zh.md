@@ -11,7 +11,11 @@ git-tidier 是清理git分支的命令行工具.
 
 - 多种模式支持：交互式模式、自定义正则匹配模式和 all in 模式
 - 默认保护最近使用分支和 main 分支，检查工作目录是否需要清理
-- 尝试清除本地远程分支
+- 尝试清除本地远程分支 (版本支持 v1.2.0+)
+- 支持设置保护分支 (版本支持 v1.4.0+)
+- 最低 node 版本支持
+    - 1.2.0+ `>= 18.0.0`
+    - 1.0.0+ `>= 16.0.0`
 
 ## Contributing
 
@@ -102,7 +106,7 @@ $ git-tidier clear -e -p '/FE-.*/' -n 0
 $ git-tidier clear -r ori
 
 # 清理时忽略 dev, develop 分支
-$ git-tidier clear -ig dev develop
+$ git-tidier clear -g dev develop
 
 # 保护分支数量为 5 条, 默认为 3 条
 $ git-tidier clear -n 5
