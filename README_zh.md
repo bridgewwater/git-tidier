@@ -102,7 +102,7 @@ $ git-tidier clear -e -p '/FE-.*/' -n 0
 $ git-tidier clear -r ori
 
 # 清理时忽略 dev, develop 分支
-$ git-tidier clear -ig dev develop
+$ git-tidier clear -g dev develop
 
 # 保护分支数量为 5 条, 默认为 3 条
 $ git-tidier clear -n 5

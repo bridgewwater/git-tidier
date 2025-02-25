@@ -23,7 +23,7 @@ program.option('-f, --force', 'force to delete, will not check branch has submit
 program.option('--protection <protection>', 'protection branch name', 'main');
 program.option('-r, --remote <remote>', 'the name of remote repo', 'origin');
 program.option(
-  '-ig, --ignore <ignore...>',
+  '-g, --ignore <ignore...>',
   'ignore branchs [ main ] is contains, if you want clean main just set -n 0',
 );
 

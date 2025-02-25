@@ -94,7 +94,7 @@ $ git-tidier clear -e -p '/FE-.*/' -n 0
 $ git-tidier clear -r ori
 
 # ignore dev when cleaning develop branch
-$ git-tidier clear -ig dev develop
+$ git-tidier clear -g dev develop
 
 # The number of protected branches is 5, and the default number is 3.
 $ git-tidier clear -n 5
