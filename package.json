@@ -41,7 +41,7 @@
     "test": "npx jest --ci"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.25.3",
+    "@babel/preset-env": "^8.0.2",
     "@types/jest": "^29.5.12",
     "chalk": "4.1.2",
     "commander": "^13.1.0",
